@@ -1,118 +1,82 @@
-# Hyde
+# Nabla containers: a new approach to container isolation
 
-Hyde is a brazen two-column [Jekyll](http://jekyllrb.com) theme that pairs a prominent sidebar with uncomplicated content. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+Despite all of the advantages that have resulted in an industry-wide
+shift towards containers, containers have not been accepted as
+isolated sandboxes, which is crucial for container-native clouds.  We
+introduce *nabla containers*, a new type of container designed for 
+strong isolation on a host.
 
-![Hyde screenshot](https://f.cloud.github.com/assets/98681/1831228/42af6c6a-7384-11e3-98fb-e0b923ee0468.png)
+Nabla containers achieve isolation by adopting a strategy of attack
+surface reduction to the host.  A visualization of this approach
+appears in this figure:
 
+<p align="center">
+<img src="resources/nabla-containers.png" width="600"\>
+</p>
 
-## Contents
+A containerized application can avoid making a Linux system call if it
+links to a library OS component that implements the system call
+functionality.  Nabla containers use library OS (aka unikernel)
+techniques, specifically those from the [Solo5
+project](https://github.com/Solo5/solo5), to avoid system calls and
+thereby reduce the attack surface.  Nabla containers only use around 9
+system calls, all others are blocked via a Linux seccomp policy.  An
+overview of the internals of a nabla container appears in this figure:
 
-- [Usage](#usage)
-- [Options](#options)
-  - [Sidebar menu](#sidebar-menu)
-  - [Sticky sidebar content](#sticky-sidebar-content)
-  - [Themes](#themes)
-  - [Reverse layout](#reverse-layout)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
+<p align="center">
+<img src="resources/nabla-internals.png" width="500"\>
+</p>
 
+### Are nabla containers really more isolated?
 
-## Usage
+The isolation in nabla containers comes from limiting access to the
+host kernel via the blocking of system calls.  We have measured
+exactly how much access to the kernel common applications exhibit with
+nabla containers and standard containers by measuring the number of
+system calls containerized applications make and correspondingly how
+many kernel functions they access.  This graph summarizes results for
+a few applications:
 
-Hyde is a theme built on top of [Poole](https://github.com/poole/poole), which provides a fully furnished Jekyll setup—just download and start the Jekyll server. See [the Poole usage guidelines](https://github.com/poole/poole#usage) for how to install and use Jekyll.
+<p align="center">
+<img src="resources/nabla-isolation.png" width="500"\>
+</p>
 
+Further measurements and results and scripts to reproduce them reside
+in the
+[nabla-measurements](https://github.com/nabla-containers/nabla-measurements)
+repository.
 
-## Options
+### Repository overview
 
-Hyde includes some customizable options, typically applied via classes on the `<body>` element.
+More information appears in each of the individual repositories
+related to nabla containers:
 
+- [runnc](https://github.com/nabla-containers/runnc): is the
+  OCI-interfacing container runtime for nabla containers.  Start here
+  to run nabla containers!
 
-### Sidebar menu
+- [nabla-demo-apps](https://github.com/nabla-containers/nabla-demo-apps):
+  shows how to build sample applications containerized as nabla
+  containers.  Helpful to see how to containerize your own application
+  by building from an existing nabla base Docker image.
 
-Create a list of nav links in the sidebar by assigning each Jekyll page the correct layout in the page's [front-matter](http://jekyllrb.com/docs/frontmatter/).
+- [nabla-measurements](https://github.com/nabla-containers/nabla-measurements):
+  contains isolation measurements of nabla containers with comparisons
+  to standard containers and other container isolation approaches,
+  such as kata containers and gvisor.
 
-```
----
-layout: page
-title: About
----
-```
+If you want to go deeper, check out the following repositories:
 
-**Why require a specific layout?** Jekyll will return *all* pages, including the `atom.xml`, and with an alphabetical sort order. To ensure the first link is *Home*, we exclude the `index.html` page from this list by specifying the `page` layout.
+- [nabla-base-build](https://github.com/nabla-containers/nabla-base-build):
+  shows how to build the nabla base Docker images.  Helpful for seeing
+  how to use rumprun to port an application or runtime as a new nabla base.
 
+- [solo5](https://github.com/nabla-containers/solo5): a temporary fork
+  of Solo5 that contains `nabla-run`, our seccomp-based backend for
+  Solo5-based unikernels.
 
-### Sticky sidebar content
+- [rumprun](https://github.com/nabla-containers/rumprun): a fork of
+  Rumprun that enables rumprun to run on the Solo5 interface.
 
-By default Hyde ships with a sidebar that affixes it's content to the bottom of the sidebar. You can optionally disable this by removing the `.sidebar-sticky` class from the sidebar's `.container`. Sidebar content will then normally flow from top to bottom.
-
-```html
-<!-- Default sidebar -->
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    ...
-  </div>
-</div>
-
-<!-- Modified sidebar -->
-<div class="sidebar">
-  <div class="container">
-    ...
-  </div>
-</div>
-```
-
-
-### Themes
-
-Hyde ships with eight optional themes based on the [base16 color scheme](https://github.com/chriskempson/base16). Apply a theme to change the color scheme (mostly applies to sidebar and links).
-
-![Hyde in red](https://f.cloud.github.com/assets/98681/1831229/42b0b354-7384-11e3-8462-31b8df193fe5.png)
-
-There are eight themes available at this time.
-
-![Hyde theme classes](https://f.cloud.github.com/assets/98681/1817044/e5b0ec06-6f68-11e3-83d7-acd1942797a1.png)
-
-To use a theme, add anyone of the available theme classes to the `<body>` element in the `default.html` layout, like so:
-
-```html
-<body class="theme-base-08">
-  ...
-</body>
-```
-
-To create your own theme, look to the Themes section of [included CSS file](https://github.com/poole/hyde/blob/master/public/css/hyde.css). Copy any existing theme (they're only a few lines of CSS), rename it, and change the provided colors.
-
-### Reverse layout
-
-![Hyde with reverse layout](https://f.cloud.github.com/assets/98681/1831230/42b0d3ac-7384-11e3-8d54-2065afd03f9e.png)
-
-Hyde's page orientation can be reversed with a single class.
-
-```html
-<body class="layout-reverse">
-  ...
-</body>
-```
-
-
-## Development
-
-Hyde has two branches, but only one is used for active development.
-
-- `master` for development.  **All pull requests should be submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
-
-
-## Author
-
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
-
-
-## License
-
-Open sourced under the [MIT license](LICENSE.md).
-
-<3
+- [rumprun-packages](https://github.com/nabla-containers/rumprun-packages):
+  a fork of rumprun-packages that contains targets to run on Solo5.
