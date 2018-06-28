@@ -1,0 +1,46 @@
+img.sidebar-logo {
+    background-color: white;
+    padding: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 48em) {
+  img.sidebar-logo {
+      margin-left: initial;
+      margin-right: initial;
+  }
+}
+
+img.author-picture {
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.author{
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    min-height: 160px;
+    text-align: left;
+    margin: 25px;
+    position: relative;
+}
+
+/* On mouse-over, add a deeper shadow */
+.author:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+a.author-link{
+    text-decoration: none;
+    color: inherit;
+}
+

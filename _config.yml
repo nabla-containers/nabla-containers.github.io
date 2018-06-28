@@ -19,3 +19,14 @@ author:
 version:          1.0.0
 github:
   repo:           https://github.com/nabla-containers
+
+collections:
+  authors:
+    output: true
+
+defaults:
+- scope:
+    path: ""
+    type: authors
+  values:
+    picture: "default.png" 

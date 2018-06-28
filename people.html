@@ -1,0 +1,19 @@
+---
+layout: page
+title: People
+---
+
+<div class="authors">
+  {% for author in site.authors %}
+  <a class="author-link" href="{{author.url}}">
+  <div class="author">
+      <img class="author-picture" alt="Avatar" src="{{ 'public/img/people/' | relative_url}}{{author.picture}}" \>  
+      <h4 class="author-name"> {{author.name}} </h4>
+      <p class="author-desc">  
+      {{ author.excerpt | strip_html | strip_newlines | truncate: 175 }}
+      </p>
+  </div>
+      </a>
+  {% endfor %}
+</div>
+
