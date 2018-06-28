@@ -1,0 +1,21 @@
+# theme: jekyll-theme-minimal
+markdown:         kramdown
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            IBM Secure Containers
+tagline:          'Make containers great again'
+description:      'A blog about security, unikernels and containers'
+url:              https://ibmsecurect.github.io
+baseurl:          /
+
+author:
+  name:           'TBD'
+  url:            https://twitter.com/
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/IBMSecureCt
