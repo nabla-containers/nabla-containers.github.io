@@ -1,7 +1,7 @@
 ---
 layout: author
-name: Brandon Lum
-picture: lumjjb.png
+name: Dan Williams
+picture: djwillia.jpeg
 ---
 
 Fill in your description here.

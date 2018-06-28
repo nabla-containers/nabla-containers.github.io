@@ -1,7 +1,7 @@
 ---
 layout: author
-name: Brandon Lum
-picture: lumjjb.png
+name: Ricardo Koller
+picture: ricarkol.jpeg
 ---
 
 Fill in your description here.
