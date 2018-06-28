@@ -44,3 +44,16 @@ a.author-link{
     color: inherit;
 }
 
+img.sidebar-logo {
+    background-color: white;
+    padding: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 48em) {
+  img.sidebar-logo {
+      margin-left: initial;
+      margin-right: initial;
+  }
+}
