@@ -1,7 +1,7 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <img src="{{ 'public/img/nabla.png' | relative_url }}" \>
+      <img class="sidebar-logo" src="{{ 'public/img/nabla.png' | relative_url }}" \>
       <h2>
         <a href="{{ '/' | relative_url }}">
           {{ site.title }}
@@ -21,7 +21,10 @@
       {% for node in pages_list %}
         {% if node.title != null %}
           {% if node.layout == "page" %}
-            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">
+        {% if node.sidebar-title != null %} {{node.sidebar-title}}
+        {% else %} {{node.title}} 
+        {% endif %}</a>
           {% endif %}
         {% endif %}
       {% endfor %}

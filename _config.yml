@@ -5,10 +5,10 @@ markdown:         kramdown
 permalink:        pretty
 
 # Setup
-title:            IBM Secure Containers
-tagline:          'Make containers great again'
-description:      'A blog about security, unikernels and containers'
-url:              https://ibmsecurect.github.io
+title:            Nabla Containers
+tagline:          'Strong Isolation through Kernel Surface Reduction'
+description:      'A blog about Security, Containers and OS'
+url:              https://nabla-containers.github.io
 baseurl:          /
 
 author:
@@ -18,4 +18,4 @@ author:
 # Custom vars
 version:          1.0.0
 github:
-  repo:           https://github.com/IBMSecureCt
+  repo:           https://github.com/nabla-containers
