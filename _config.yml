@@ -6,7 +6,7 @@ permalink:        pretty
 
 # Setup
 title:            Nabla Containers
-tagline:          'Strong Isolation through Kernel Surface Reduction'
+tagline:          'A new approach to Container Isolation'
 description:      'A new approach to Container Isolation'
 url:              https://nabla-containers.github.io
 baseurl:          /
