@@ -1,6 +1,7 @@
 ---
-layout: default
-title: Home
+layout: page
+title: Blog
+hide-title: true
 ---
 
 <div class="posts">

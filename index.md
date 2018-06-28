@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: default
 title: "Nabla containers: a new approach to container isolation"
-sidebar-title: About
 ---
+
+# Nabla containers: a new approach to container isolation
 
 Despite all of the advantages that have resulted in an industry-wide
 shift towards containers, containers have not been accepted as
