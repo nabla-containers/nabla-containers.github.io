@@ -47,8 +47,10 @@ repository.
 
 ### Repository overview
 
-More information appears in each of the individual repositories
-related to nabla containers:
+More information appears in each of the individual repositories related to 
+nabla containers. In addition, this 
+[article]({% post_url 2018-06-28-nabla-setup %}) steps you through the 
+process of running you first nabla container:
 
 - [runnc](https://github.com/nabla-containers/runnc): is the
   OCI-interfacing container runtime for nabla containers.  Start here
