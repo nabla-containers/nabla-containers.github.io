@@ -1,7 +1,7 @@
 ---
 layout: author
 name: Ricardo Koller
-picture: ricarkol.jpeg
+picture: ricarkol.png
 ---
 
 Ricardo Koller is a systems researcher at the IBM T.J. Watson Research Center.
