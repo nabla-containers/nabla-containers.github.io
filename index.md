@@ -22,7 +22,7 @@ links to a library OS component that implements the system call
 functionality.  Nabla containers use library OS (aka unikernel)
 techniques, specifically those from the [Solo5
 project](https://github.com/Solo5/solo5), to avoid system calls and
-thereby reduce the attack surface.  Nabla containers only use around 9
+thereby reduce the attack surface.  Nabla containers only use 9
 system calls, all others are blocked via a Linux seccomp policy.  An
 overview of the internals of a nabla container appears in this figure:
 
@@ -72,9 +72,10 @@ If you want to go deeper, check out the following repositories:
   shows how to build the nabla base Docker images.  Helpful for seeing
   how to use rumprun to port an application or runtime as a new nabla base.
 
-- [solo5](https://github.com/nabla-containers/solo5): a temporary fork
-  of Solo5 that contains `nabla-run`, our seccomp-based backend for
-  Solo5-based unikernels.
+- [solo5](https://github.com/nabla-containers/solo5): A temporary branch of
+  Solo5 (http://github.com/Solo5/solo5) that contains "nabla-run", a
+  seccomp-based tender for Solo5. We are working on adding this new tender
+  changes upstream.
 
 - [rumprun](https://github.com/nabla-containers/rumprun): a fork of
   Rumprun that enables rumprun to run on the Solo5 interface.
