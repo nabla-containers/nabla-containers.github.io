@@ -93,8 +93,8 @@ Here are some missing features that we are currently working on:
 - base images for all the known apps that can run on rumprun (from rumprun-packages), like openjdk.
 - a writable file system. Currently only /tmp is writable.
 - support for committing the image
-- volumes (as in no "docker -v /a/b:/c/d")
-- not ignoring cgroups. Although mem could be easy
+- volumes (as in `docker -v /a:/a`)
+- not ignoring cgroups. Start with the memory ones.
 - multiple network interfaces
 - not using runc. Right now, runnc calls runc which then calls nabla-run
 
