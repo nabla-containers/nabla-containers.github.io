@@ -105,7 +105,7 @@ These are some harder features (sorted from most to less important):
 - GPU support
 - support for custom/host namespaces
 - docker exec(). What exactly would it run? what do people do for microcontainers (like an image with just one statically built go binary)
-- "real" TLS (Thread Local Storage) support. Right now, if you use the `pthread_key_create` you won't be using real segment based TLS.
+- "real" TLS (Thread Local Storage) support. Right now, if you use the `pthread_key_create` call you won't be using real segment based TLS.
 
 Harder limitations that we don't know how to fix (nor we don't know if they should be fixed):
 - support for running vanilla images. Currently nabla can only run nabla based images.
