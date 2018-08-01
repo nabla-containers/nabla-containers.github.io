@@ -22,11 +22,20 @@ links to a library OS component that implements the system call
 functionality.  Nabla containers use library OS (aka unikernel)
 techniques, specifically those from the [Solo5
 project](https://github.com/Solo5/solo5), to avoid system calls and
-thereby reduce the attack surface.  Nabla containers only use 9
-system calls, all others are blocked via a Linux seccomp policy.  An
+thereby reduce the attack surface.  Nabla containers only use 7
+system calls; all others are blocked via a Linux seccomp policy.  An
 overview of the internals of a nabla container appears in this figure:
 
 ![nabla-internals]({{"public/img/nabla-internals.png" | relative_url}})
+
+For the curious, here are the allowed syscalls: `read`, `write`,
+`exit_group`, `clock_gettime`, `ppoll`, `pwrite64`, and
+`pread64`. They are restricted to specific file descriptors (already
+opened before enabling seccomp). They originate from the hypercall
+implementations of the `ukvm` unikernel monitor.[^1] Check out [the
+code](https://github.com/nabla-containers/solo5/blob/ukvm-linux-seccomp/ukvm/ukvm_hv_linux.c#L53-L106)
+for more specifics.
+
 
 ### Are nabla containers really more isolated?
 
@@ -85,4 +94,14 @@ If you want to go deeper, check out the following repositories:
 
 ### Limitations
 
-The main one is that the Nabla runtime (runnc) only supports images built for nabla (see [nabla-base-build](https://github.com/nabla-containers/nabla-base-build)). Other limitations are listed [here](https://github.com/nabla-containers/runnc#limitations).
+The main limitation is that the Nabla runtime (runnc) only supports
+images built for nabla (see
+[nabla-base-build](https://github.com/nabla-containers/nabla-base-build)). Other
+limitations are listed
+[here](https://github.com/nabla-containers/runnc#limitations).
+
+
+[^1]: For more information about `ukvm`, check out our HotCloud '16
+      paper [Unikernel Monitors: Extending Minimalism Outside of the
+      Box](https://www.usenix.org/conference/hotcloud16/workshop-program/presentation/williams)
+      or the [Solo5](http://github.com/Solo5/solo5) project on Github.
