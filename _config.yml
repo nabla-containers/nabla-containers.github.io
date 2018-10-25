@@ -19,7 +19,8 @@ author:
 version:          1.0.0
 github:
   repo:           https://github.com/nabla-containers
-
+repository:       nabla-containers.github.io/nabla-containers
+  
 collections:
   authors:
     output: true
