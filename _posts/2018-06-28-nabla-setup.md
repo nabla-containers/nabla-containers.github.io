@@ -173,12 +173,14 @@ Bringing machine 'default' up with 'virtualbox' provider...
 $ vagrant ssh
 ubuntu@ubuntu-xenial:~$ sudo apt update
 ... <TRUNCATED>...
-ubuntu@ubuntu-xenial:~$ sudo apt install -y golang
-... <TRUNCATED>...
-
 # TO install docker, we use instructions from:
 # https://docs.docker.com/install/linux/docker-ce/ubuntu/
 # for the most updated
+
+# TO install golang, we use instructions from:
+# https://golang.org/doc/install#install
+# for the most updated
+
 ```
 
 
