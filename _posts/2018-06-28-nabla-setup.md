@@ -158,6 +158,8 @@ Stay tuned for the next article on how to create `node.js` and  `python` nabla c
 
 ## Appendix: Setting up a Linux VM with golang and docker.
 
+Note that if you want to perform a more advanced setup (i.e. with k8s - you may need more memory and disk than the default.
+
 We set up a dev VM using vagrant:
 
 ```
