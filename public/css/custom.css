@@ -57,3 +57,12 @@ img.sidebar-logo {
       margin-right: initial;
   }
 }
+
+.announcements {
+    background-color: #e0ffde;
+    border:thin solid #75b5aa;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 50px;
+}
