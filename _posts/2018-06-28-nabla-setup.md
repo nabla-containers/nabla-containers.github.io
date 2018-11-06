@@ -3,6 +3,8 @@ layout: post
 title: Running a Nabla Container
 date: 2018-06-28
 image: nabla-build-runtime.png
+author: lumjjb
+description: Getting started with Nabla Containers. We will go through the build and installation process, and get you started on running your first nabla container - in 3 simple steps!
 ---
 
 Earlier, we introduced [Nabla Containers]({{'/' | relative_url}}). In this article we will show how you can get started with Nabla-containers! We will go through the build and installation process, and get you started on running your first nabla container - in 3 simple steps! In the following articles, we will show how you can create your own nabla containerized `node.js` and `python` applications!
