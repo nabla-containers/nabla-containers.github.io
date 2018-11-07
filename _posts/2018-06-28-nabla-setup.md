@@ -2,7 +2,6 @@
 layout: post
 title: Running a Nabla Container
 date: 2018-06-28
-image: nabla-build-runtime.png
 author: lumjjb
 description: Getting started with Nabla Containers. We will go through the build and installation process, and get you started on running your first nabla container - in 3 simple steps!
 ---
