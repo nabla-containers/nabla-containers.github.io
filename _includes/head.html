@@ -14,6 +14,27 @@
     {% endif %}
   </title>
 
+  <meta content="{{ site.title }}" property="og:site_name">
+  <meta name="twitter:card" content="summary">
+  {% if page.title %}<meta name="twitter:title" content="{{ page.title }}">
+  <meta content="{{ page.title }}" property="og:title">
+  {% else %}<meta name="twitter:title" content="{{ site.title }}">
+  <meta content="{{ site.title }}" property="og:title">{% endif %}
+  {% if page.layout == 'post' %}
+  <meta content="article" property="og:type">
+  <meta content="{{ site.url }}/authors/{{ page.author }}" property="article:author">
+  {% else %}<meta content="website" property="og:type">{% endif %}
+  {% if page.description %}<meta name="twitter:description" content="{{ page.description }}">
+  <meta content="{{ page.description }}" property="og:description">
+  {% else %}<meta name="twitter:description" content="{{ site.description }}">
+  <meta content="{{ site.description }}" property="og:description">{% endif %}
+  {% if page.url %}<meta content="{{ site.url }}{{ page.url }}" property="og:url">{% endif %}
+  {% if page.date %}<meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">{% endif %}
+  {% if page.image %}<meta name="twitter:image:src" content="{{ site.url }}/public/img/{{ page.image }}">
+  <meta content="{{ site.url }}public/img/{{ page.image }}" property="og:image">
+  {% else %}<meta name="twitter:image:src" content="{{ site.url }}/public/img/nabla-border.png">
+  <meta content="{{ site.url }}/public/img/nabla-border.png" property="og:image">{% endif %}
+
   <!-- CSS -->
   <link rel="stylesheet" href="{{ '/public/css/poole.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/public/css/syntax.css' | relative_url }}">
@@ -36,7 +57,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-  
+
     gtag('config', 'UA-122333911-1');
   </script>
 

@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Running a Nabla Container
+date: 2018-06-28
+author: lumjjb
+description: Getting started with Nabla Containers. We will go through the build and installation process, and get you started on running your first nabla container - in 3 simple steps!
 ---
 
 Earlier, we introduced [Nabla Containers]({{'/' | relative_url}}). In this article we will show how you can get started with Nabla-containers! We will go through the build and installation process, and get you started on running your first nabla container - in 3 simple steps! In the following articles, we will show how you can create your own nabla containerized `node.js` and `python` applications!
@@ -49,7 +52,7 @@ make[2]: Leaving directory '/go/src/github.com/nabla-containers/runnc/solo5/test
 make[1]: Leaving directory '/go/src/github.com/nabla-containers/runnc/solo5'
 install -m 775 -D solo5/ukvm/ukvm-bin build/nabla-run
 ```
-We should see that the following files exist: 
+We should see that the following files exist:
 
 ```
 ubuntu@ubuntu-xenial:~/go/src/github.com/nabla-containers/runnc$ ls -l build/
@@ -99,7 +102,7 @@ ubuntu@ubuntu-xenial:~/go/src/github.com/nabla-containers/runnc$ sudo apt instal
 ... <TRUNCATED>...
 ```
 
-Finally, we go ahead to configure docker to use our runtime. This can be done by editing the `/etc/docker/daemon.json` file. By default, there is not configuration, so we just add the file. 
+Finally, we go ahead to configure docker to use our runtime. This can be done by editing the `/etc/docker/daemon.json` file. By default, there is not configuration, so we just add the file.
 
 NOTE: if you have custom runtimes already installed, we recommend modifying the file yourself.
 
@@ -184,5 +187,3 @@ ubuntu@ubuntu-xenial:~$ sudo apt update
 # for the most updated
 
 ```
-
-
