@@ -10,4 +10,4 @@ We presented our work at the inaugural Kubecon + CloudNativeCon China 2018! You 
 
 {% include youtubePlayer.html id="YIsM0zoRzrE" %}
 
-You may also download a copy of our slides [here]({{ 'public/misc/k8sChina2018-nabla.pdf' | relative_url }}).
+You may also download a copy of our slides [here]({{ 'public/misc/nabla-containers-k8schina2018.pdf' | relative_url }}).
