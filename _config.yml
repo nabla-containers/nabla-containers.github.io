@@ -19,6 +19,8 @@ author:
 version:          1.0.0
 github:
   repo:           https://github.com/nabla-containers
+slack:
+  invite:         https://slack.nabla-containers.com
 repository:       nabla-containers.github.io/nabla-containers
   
 collections:
