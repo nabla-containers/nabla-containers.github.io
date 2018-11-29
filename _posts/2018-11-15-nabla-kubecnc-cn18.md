@@ -2,7 +2,9 @@
 layout: post
 title: Nabla Containers @ Kubecon + CloudNativeCon China 2018
 date: 2018-11-15
-author: lumjjb
+author:
+- lumjjb
+- ricarkol
 description: Nabla Containers Presentation at Kubecon + CloudNativeCon China 2018
 ---
 

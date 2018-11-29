@@ -12,7 +12,7 @@ hide-title: true
         {{ post.title }}
       </a>
     </h1>
-    <span class="post-date">{{ post.date | date_to_string }}</span>
+    <span class="post-metadata">{{ post.date | date_to_string }}</span>
     {{ post.excerpt | strip_html | strip_newlines | truncate: 175 }}
   </div>
   {% endfor %}
