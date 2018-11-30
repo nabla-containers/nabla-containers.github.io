@@ -22,7 +22,11 @@
   <meta content="{{ site.title }}" property="og:title">{% endif %}
   {% if page.layout == 'post' %}
   <meta content="article" property="og:type">
+  {% if page.author.first %}
+  <meta content="{{ site.url }}/authors/{{ page.author.first }}" property="article:author">
+  {% else %}
   <meta content="{{ site.url }}/authors/{{ page.author }}" property="article:author">
+  {% endif %}
   {% else %}<meta content="website" property="og:type">{% endif %}
   {% if page.description %}<meta name="twitter:description" content="{{ page.description }}">
   <meta content="{{ page.description }}" property="og:description">

@@ -4,7 +4,13 @@ layout: default
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
+  {% assign post_author = page.author | join: ",/authors/" | prepend: "/authors/" %}
+  {% assign post_authors = site.authors | where_exp: "item", "post_author contains item.id" %}
+  <span class="post-metadata">
+      Written by {{ post_authors | map: "name" | join: ", " }}
+      {{ page.date | date_to_string }}
+  </span>
+
   {{ content }}
 </div>
 
