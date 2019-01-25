@@ -4,10 +4,35 @@ layout: default
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  {% assign post_author = page.author | join: ",/authors/" | prepend: "/authors/" %}
-  {% assign post_authors = site.authors | where_exp: "item", "post_author contains item.id" %}
+
+  {% comment %}
+  This snippet of code takes authors of a page, either a string or list and
+  does resolution for site author IDs and leaves others untouched otherwise.
+  {% endcomment %}
+
+  {% if page.author.first %}
+      {% assign post_author_array = page.author %}
+  {% else %}
+      {% assign post_author_array = page.author | split: ','  %}
+  {% endif %}
+
+
+  {% for a in post_author_array %}
+    {% assign apath = a | prepend: "/authors/" %}
+    {% assign alookup = site.authors | where: "id", apath %}
+    {% if alookup.size > 0 %}
+        {% assign atoadd = alookup.first.name %}
+    {% else %}
+        {% assign atoadd = a %}
+    {% endif %}
+    {% assign authors_verbose = authors_verbose | append: atoadd | append: ", " %}
+  {% endfor %}
+
+  {% assign trunc_size = authors_verbose | size | minus: 2 %}
+  {% assign authors_verbose = authors_verbose | slice: 0, trunc_size  %}
+
   <span class="post-metadata">
-      Written by {{ post_authors | map: "name" | join: ", " }}
+      Written by {{ authors_verbose }}
       {{ page.date | date_to_string }}
   </span>
 
