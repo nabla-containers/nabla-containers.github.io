@@ -1,12 +1,27 @@
 ---
 layout: post
-title: Running a Nabla Container
-date: 2018-06-28
+title: Runnc Release v0.3 and Updated Setup
+date: 2019-03-19
 author: lumjjb
-description: Getting started with Nabla Containers. We will go through the build and installation process, and get you started on running your first nabla container - in 3 simple steps!
+description: Nabla has just released v0.3!
 ---
 
-## NOTE: This is using an old version of `runnc`, for the latest version, please look at the [updated post]({% post_url 2019-03-19-nabla-setup-v0.3 %})
+
+Nabla has just released v0.3! This has some implications for users. Mainly that images used have to adapt changes from the changes to solo5. This is largely due to the moving of our experimental features to upstream solo5! Along those lines, we've had some work done by the folks at [@CloudKernels](https://twitter.com/CloudKernels) to provide support for `aarch64` coming to a nabla near you! We have some ideas floating around for `runnc` v0.4, so we are looking forward to what's to come!
+
+We would like to thank everyone for contributing to the several features since v0.2!
+- Update to new Solo5 spt (@ananos, @ricarkol)
+- `aarch64` support (@ananos, @papazof)
+- Move runnc-cont inside runnc (@zhuangqh)
+- Pass memory requirement to runnc, `--oom-score-adj` (@InTheCloudDan)
+
+This is the end of our announcement, and the rest of the blog is an updated version of the original setup blog for v0.3.
+
+---
+
+## Original blog post on "Running a Nabla Container" modified for v0.3
+
+NOTE: This is an updated version using `runnc` v0.3 of the [original post]({% post_url 2018-06-28-nabla-setup %}).
 
 Earlier, we introduced [Nabla Containers]({{'/' | relative_url}}). In this article we will show how you can get started with Nabla-containers! We will go through the build and installation process, and get you started on running your first nabla container - in 3 simple steps! In the following articles, we will show how you can create your own nabla containerized `node.js` and `python` applications!
 
@@ -61,7 +76,6 @@ ubuntu@ubuntu-xenial:~/go/src/github.com/nabla-containers/runnc$ ls -l build/
 total 7268
 -rwxrwxr-x 1 root root  170960 Jun 22 14:23 nabla-run
 -rwxr-xr-x 1 root root 2696096 Jun 22 14:23 runnc
--rwxr-xr-x 1 root root 4568704 Jun 22 14:23 runnc-cont
 ```
 
 Now let's install `runnc`, using `make container-install`.
@@ -72,12 +86,7 @@ Sending build context to Docker daemon 22.07 MB
 ... <TRUNCATED> ...
 sudo hack/copy_binaries.sh
 build/runnc
-build/runnc-cont
 build/nabla-run
-sudo hack/copy_libraries.sh
-Copying /lib/x86_64-linux-gnu/libseccomp.so.2 to /opt/runnc/lib/
-Copying /lib/x86_64-linux-gnu/libc.so.6 to /opt/runnc/lib/
-Copying /lib64/ld-linux-x86-64.so.2 to /opt/runnc/lib/
 ```
 
 We should verify that the following files exist:
@@ -87,13 +96,6 @@ ubuntu@ubuntu-xenial:~/go/src/github.com/nabla-containers/runnc$ ls -l /usr/loca
 total 7268
 -rwxr-xr-x 1 root root  170960 Jun 22 14:33 nabla-run
 -rwxr-xr-x 1 root root 2696096 Jun 22 14:33 runnc
--rwxr-xr-x 1 root root 4568704 Jun 22 14:33 runnc-cont
-
-ubuntu@ubuntu-xenial:~/go/src/github.com/nabla-containers/runnc$ ls -l /opt/runnc/lib/
-total 2080
--rwxr-xr-x 1 root root  153288 Jun 22 14:33 ld-linux-x86-64.so.2
--rwxr-xr-x 1 root root 1689360 Jun 22 14:33 libc.so.6
--rw-r--r-- 1 root root  280872 Jun 22 14:33 libseccomp.so.2
 ```
 
 ## Step 2: Installing the runtime for docker
@@ -129,7 +131,7 @@ sudo systemctl restart docker
 ## Step 3: Creating our first nabla container
 Let's go ahead to start our first nabla container:
 ```
-$ sudo docker run --rm -p 8080:8080 --runtime=runnc nablact/node-express-nabla:v0.2 &
+$ sudo docker run --rm -p 8080:8080 --runtime=runnc nablact/node-express-nabla:v0.3 &
 Unable to find image 'nablact/node-express:v0.2' locally
 latest: Pulling from nablact/node-express
 03e1855d4f31: Already exists
@@ -144,7 +146,7 @@ a0cf1d52e01e: Pull complete
 37f52a1e80e8: Pull complete
 ac16621c4c84: Pull complete
 Digest: sha256:e077d441aa67bc74d982af27e35ed0f40270e7fd4747cac9ce9b71d6bf5f83fb
-Status: Downloaded newer image for nablact/node-express:v0.2
+Status: Downloaded newer image for nablact/node-express:v0.3
 ... <TRUNCATED> ...
 [/nabla-run --net=tap100 --disk=/rootfs.iso /node.nabla {"env":"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin","env":"HOSTNAME=0f9813ba8dba","cmdline":"/node.nabla /home/node/app/app.js","net":{"if":"ukvmif0","cloner":"True","type":"inet","method":"static","addr":"172.17.0.2","mask":"16","gw":"172.17.0.1"},"blk":{"source":"etfs","path":"/dev/ld0a","fstype":"blk","mountpoint":"/"},"cwd":"/"}]
 ... <TRUNCATED> ...
