@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "br1dging the Gap II: Networking Complications"
-date:   2019-04-05
+date:   2019-04-18
 tags: solo5 rumprun kubernetes cni oci
 author: Brandon Lum
 ---
