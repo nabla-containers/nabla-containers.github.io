@@ -10,7 +10,7 @@ tagline:          'A new approach to Container Isolation'
 description:      'A new approach to Container Isolation'
 url:              https://nabla-containers.github.io
 baseurl:          /
-future:           false
+future:           true
 
 author:
   name:           'TBD'
@@ -21,7 +21,7 @@ version:          1.0.0
 github:
   repo:           https://github.com/nabla-containers
 slack:
-  invite:         https://slack.nabla-containers.com
+  invite:         http://slack.nabla-containers.com
 repository:       nabla-containers.github.io/nabla-containers
   
 collections:
