@@ -98,7 +98,7 @@ However, since the addresses are on a different subnet. The connection process i
 6. The frame gets forwarded through but the bridge `br0` on the node.js pod forwards this to `eth0` instead, since 
 7. `eth0` discards the frame as it has no use of it.
 
-The problem here is that the ARP table in the router is not updated with the new MAC oddress of `ukvmif`. We will perform a fix by telling our unikernel to adopt the MAC address of the initially assigned MAC address of the `eth0` interface.
+The problem here is that the ARP table in the router is not updated with the new MAC address of `ukvmif`. We will perform a fix by telling our unikernel to adopt the MAC address of the initially assigned MAC address of the `eth0` interface.
 
 ![ukvm-network-new-send-fixed]({{"/public/img/19-04-05-ukvm-network-new-send-fixed.png" | relative_url }})
 
